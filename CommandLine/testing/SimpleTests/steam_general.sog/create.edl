@@ -1,21 +1,25 @@
-steam_api = false;
+var steam_api = 0;
+
+show_debug_message("steam_initialised: "+string(steam_initialised()));
+show_debug_message("steam_stats_ready: "+string(steam_stats_ready()));
+show_debug_message("steam_is_overlay_enabled: "+string(steam_is_overlay_enabled()));
 
 if (steam_initialised())
 {
     if (steam_stats_ready() && steam_is_overlay_enabled())
     {
-        steam_api = true;
+        steam_api = 1;
     }
 }
 
-gtest_assert_eq(steam_api,  true);
+gtest_assert_true(steam_api);
 
 var app_id = steam_get_app_id();
 gtest_assert_eq(app_id,  480);
 
 var logged_in = steam_is_user_logged_on();
-gtest_assert_eq(logged_in,  true);
+gtest_assert_true(logged_in);
 
 steam_shutdown();
 steam_api = steam_initialised();
-gtest_assert_eq(steam_api,  false);
+gtest_assert_false(steam_api);
