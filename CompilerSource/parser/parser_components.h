@@ -25,12 +25,16 @@
 **                                                                              **
 \********************************************************************************/
 
+#ifndef ENIGMA_COMPILER_PARSER_PARSER_COMPONENTS_h
+#define ENIGMA_COMPILER_PARSER_PARSER_COMPONENTS_h
+
 typedef size_t pt; //Use size_t as our pos type; this will prevent errors with size_t's like std::string::npos
 
 #include "darray.h"
+#include "object_storage.h"
 
 extern map<string,char> edl_tokens;
-int parser_ready_input(string&,string&,unsigned int&,varray<string>&);
+int parser_ready_input(string&,string&,unsigned int&,varray<string>&,const enigma::parsing::ParseContext&);
 int  parser_fix_templates(string &code,pt pos,pt spos,string *synt);
 void parser_add_semicolons(string &code,string &synt);
 void print_the_fucker(string code,string synt);
@@ -41,4 +45,4 @@ int quickscope();
 int initscope(string name);
 int quicktype(unsigned flags, string name);
 
-
+#endif
