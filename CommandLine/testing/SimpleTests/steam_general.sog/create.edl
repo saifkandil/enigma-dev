@@ -1,9 +1,5 @@
 var steam_api = 0;
 
-show_debug_message("steam_initialised: "+string(steam_initialised()));
-show_debug_message("steam_stats_ready: "+string(steam_stats_ready()));
-show_debug_message("steam_is_overlay_enabled: "+string(steam_is_overlay_enabled()));
-
 if (steam_initialised())
 {
     if (steam_stats_ready() && steam_is_overlay_enabled())
