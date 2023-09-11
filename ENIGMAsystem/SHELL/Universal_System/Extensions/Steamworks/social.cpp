@@ -39,18 +39,12 @@ bool social_pre_checks(const std::string& script_name) {
 
 namespace enigma {
 unsigned char RGBAtoARGB(unsigned char rgba) {
-  unsigned char r = (rgba >> 6) & 0xFF;
-  unsigned char g = (rgba >> 4) & 0xFF;
-  unsigned char b = (rgba >> 2) & 0xFF;
-  unsigned char a = rgba & 0xFF;
-
-  unsigned char argb = (a << 6) | (r << 4) | (g << 2) | b;
+  unsigned char argb {0b00000000};
   return argb;
 }
 
 unsigned char RGBAtoBGRA(unsigned char rgba) {
-  unsigned char bgra = rgba & 0b11111100;
-  bgra |= (rgba & 0b00000011) << 6;
+  unsigned char bgra {0b00000000};
   return bgra;
 }
 }  // namespace enigma
