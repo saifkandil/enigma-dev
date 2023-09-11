@@ -29,6 +29,11 @@
 
 // TODO: Social API will be postponed until this merged https://github.com/enigma-dev/enigma-dev/pull/2361.
 
+namespace enigma {
+unsigned char RGBAtoARGB(unsigned char rgba);
+unsigned char RGBAtoBGRA(unsigned char rgba);
+}  // namespace enigma
+
 namespace enigma_user {
 
 extern const unsigned steam_user_avatar_size_small;
@@ -110,6 +115,9 @@ var steam_image_get_size(const int steam_image_id);
 
 bool steam_image_get_rgba(const int steam_image_id, const int buffer, const int size);
 bool steam_image_get_bgra(const int steam_image_id, const int buffer, const int size);
+
+bool steam_image_get_argb(const int steam_image_id, const int buffer, const int size);
+int steam_image_create_sprite(const int steam_image_id);
 
 }  // namespace enigma_user
 
