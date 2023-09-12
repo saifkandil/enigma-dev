@@ -22,6 +22,11 @@
       <object>objects\Obj_Steam_GeneralInfo</object>
       <object>objects\Obj_Steam_ProfileImage</object>
     </objects>
+    <objects name="Assets">
+      <object>objects\Obj_ENIGMA_text</object>
+      <object>objects\Obj_ENIGMA_textbox</object>
+      <object>objects\Obj_ENIGMA_button</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\Room_Steam_Init</room>
