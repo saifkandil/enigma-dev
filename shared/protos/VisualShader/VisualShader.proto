@@ -1,0 +1,35 @@
+syntax = "proto3";
+package buffers.resources;
+
+import "VisualShader/VisualShaderNodes.proto";
+
+message VisualShader {
+    optional int32 id = 1;
+
+    message VisualShaderNode {
+        optional int32 id = 1;
+
+        message VisualShaderCoordinate {
+            optional int32 x = 1;
+            optional int32 y = 2;
+        }
+
+        optional VisualShaderCoordinate coordinate = 2;
+
+        oneof node {
+            VisualShaderNodeFloatConstant float_constant = 3;
+        }
+    }
+
+    repeated VisualShaderNode nodes = 2;
+
+    message VisualShaderConnection {
+        optional int32 id = 1;
+        optional int32 to_node = 2;
+        optional int32 to_port = 3;
+        optional int32 from_node = 4;
+        optional int32 from_port = 5;
+    }
+
+    repeated VisualShaderConnection connections = 3;
+}

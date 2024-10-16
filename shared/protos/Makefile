@@ -1,6 +1,6 @@
 include ../../Config.mk
 
-PROTO_SOURCES := $(wildcard *.proto) $(wildcard Configuration/*.proto)
+PROTO_SOURCES := $(wildcard *.proto) $(wildcard VisualShader/*.proto)
 SOURCES_GRPC := server.proto
 LDFLAGS += -shared -lgrpc++ -lprotobuf
 CXXFLAGS += -D_WIN32_WINNT=0x0600 -I$(OBJ_DIR) -fPIC

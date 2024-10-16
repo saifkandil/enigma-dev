@@ -7,7 +7,7 @@ import "Background.proto";
 import "Object.proto";
 import "Script.proto";
 import "Shader.proto";
-import "VisualShader.proto";
+import "VisualShader/VisualShader.proto";
 import "Path.proto";
 import "Font.proto";
 import "Timeline.proto";
@@ -18,6 +18,8 @@ import "Settings.proto";
 // NOTE: The field numbers here are very important. DON'T CHANGE THEM. Changing them
 // will break the compatibility with the old versions of the project files and the 
 // compileEGMf.dll plugin.
+
+// IMPORTANT: https://protobuf.dev/programming-guides/proto3/#assigning
 
 message TreeNode {
   message Folder {

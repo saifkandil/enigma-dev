@@ -61,7 +61,7 @@ if (NOT EXISTS ${GRPC_EXE})
   message(FATAL_ERROR "${GRPC_EXE} not found. Please install gRPC and set GRPC_EXE to the grpc_cpp_plugin executable.")
 endif()
 
-file(GLOB PROTO_FILES *.proto)
+file(GLOB PROTO_FILES *.proto VisualShader/*.proto)
 
 set(GRPC_SRCS "${CMAKE_CURRENT_BINARY_DIR}/server.grpc.pb.cc")
 
