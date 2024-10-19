@@ -3,8 +3,9 @@ package buffers.resources;
 
 import "google/protobuf/descriptor.proto";
 
+// https://protobuf.dev/programming-guides/proto3/#enum-default
 enum VisualShaderNodePortType {
-    PORT_TYPE_UNKNOWN = 0;
+    PORT_TYPE_UNSPECIFIED = 0;
     PORT_TYPE_SCALAR = 1;
     PORT_TYPE_SCALAR_INT = 2;
     PORT_TYPE_SCALAR_UINT = 3;
@@ -37,5 +38,18 @@ message VisualShaderNodeFloatConstant {
 
     option (node_output_port_count) = 1;
     option (node_output_port_type) = PORT_TYPE_SCALAR;
+    option (node_output_port_caption) = "";
+}
+
+message VisualShaderNodeIntConstant {
+    optional int32 value = 1;
+    
+    option (node_caption) = "Int Constant";
+    option (node_input_port_count) = 0;
+    option (node_input_port_type) = PORT_TYPE_SCALAR_INT;
+    option (node_input_port_caption) = "";
+
+    option (node_output_port_count) = 1;
+    option (node_output_port_type) = PORT_TYPE_SCALAR_INT;
     option (node_output_port_caption) = "";
 }

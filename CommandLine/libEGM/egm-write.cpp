@@ -1,4 +1,5 @@
-/** Copyright (C) 2018 Greg Williamson, Robert B. Colton, Josh Ventura
+/** Copyright (C) 2024 Greg Williamson, Robert B. Colton, Josh Ventura, 
+ *                     Saif Kandil (k0T0z)
 ***
 *** This file is a part of the ENIGMA Development Environment.
 ***
@@ -175,6 +176,15 @@ bool WriteShader(string fName, const buffers::resources::Shader &shdr) {
   return false;
 }
 
+bool WriteVisualShader(string fName, const buffers::resources::VisualShader &vs_shdr) {
+  if (std::ofstream fout{fName + ".frag"}) {
+    fout << vs_shdr.fragment_shader_code();
+    return true;
+  }
+
+  return false;
+}
+
 template<typename T>
 bool WriteRoomSnowflakes(const fs::path &egm_root, const fs::path &dir,
                          YAML::Emitter &yaml, T *layer) {
@@ -331,6 +341,8 @@ bool EGMFileFormat::WriteRes(buffers::TreeNode* res, const fs::path &dir,
     return egm_internal::WriteScript(newDir + ".edl", res->script());
    case Type::kShader:
     return egm_internal::WriteShader(newDir, res->shader());
+   case Type::kVisualShader:
+    return egm_internal::WriteVisualShader(newDir, res->visual_shader());
    case Type::kSound:
     return egm_internal::WriteYaml(egm_root, newDir + ".snd", res->mutable_sound());
    case Type::kSprite:
@@ -364,6 +376,8 @@ inline const std::string type2name(int type) {
     return "script";
    case Type::kShader:
     return "shader";
+   case Type::kVisualShader:
+    return "visual_shader";
    case Type::kSound:
     return "sound";
    case Type::kSprite:
@@ -391,6 +405,8 @@ inline int getResID(buffers::TreeNode* res) {
     return res->script().id();
    case Type::kShader:
     return res->shader().id();
+   case Type::kVisualShader:
+    return res->visual_shader().id();
    case Type::kSound:
     return res->sound().id();
    case Type::kSprite:
