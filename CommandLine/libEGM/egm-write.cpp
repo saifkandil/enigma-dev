@@ -342,7 +342,8 @@ bool EGMFileFormat::WriteRes(buffers::TreeNode* res, const fs::path &dir,
    case Type::kShader:
     return egm_internal::WriteShader(newDir, res->shader());
    case Type::kVisualShader:
-    return egm_internal::WriteVisualShader(newDir, res->visual_shader());
+    return egm_internal::WriteYaml(egm_root, newDir + ".vsh", res->mutable_visual_shader()) &&
+           egm_internal::WriteVisualShader(newDir, res->visual_shader());
    case Type::kSound:
     return egm_internal::WriteYaml(egm_root, newDir + ".snd", res->mutable_sound());
    case Type::kSprite:

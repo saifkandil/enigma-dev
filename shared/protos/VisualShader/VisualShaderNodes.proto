@@ -28,28 +28,30 @@ extend google.protobuf.MessageOptions {
     string node_output_port_caption = 60007;
 }
 
+// TODO: Can we create an interface for these messages?
+
 message VisualShaderNodeFloatConstant {
-    optional float value = 1;
-    
     option (node_caption) = "Float Constant";
     option (node_input_port_count) = 0;
     option (node_input_port_type) = PORT_TYPE_SCALAR;
     option (node_input_port_caption) = "";
-
+    
     option (node_output_port_count) = 1;
     option (node_output_port_type) = PORT_TYPE_SCALAR;
     option (node_output_port_caption) = "";
+
+    optional double value = 1;
 }
 
 message VisualShaderNodeIntConstant {
-    optional int32 value = 1;
-    
     option (node_caption) = "Int Constant";
     option (node_input_port_count) = 0;
     option (node_input_port_type) = PORT_TYPE_SCALAR_INT;
     option (node_input_port_caption) = "";
-
+    
     option (node_output_port_count) = 1;
     option (node_output_port_type) = PORT_TYPE_SCALAR_INT;
     option (node_output_port_caption) = "";
+
+    optional int32 value = 1;
 }

@@ -4,22 +4,18 @@ package buffers.resources;
 import "VisualShader/VisualShaderNodes.proto";
 
 message VisualShader {
-    optional int32 id = 1;
-
     message VisualShaderNode {
         optional int32 id = 1;
-
+        
         optional double x_coordinate = 2;
         optional double y_coordinate = 3;
-
+        
         oneof node_type {
             VisualShaderNodeFloatConstant float_constant = 4;
             VisualShaderNodeIntConstant int_constant = 5;
         }
     }
-
-    repeated VisualShaderNode nodes = 2;
-
+    
     message VisualShaderConnection {
         optional int32 id = 1;
         optional int32 from_node_id = 2;
@@ -27,8 +23,9 @@ message VisualShader {
         optional int32 to_node_id = 4;
         optional int32 to_port_index = 5;
     }
-
+    
+    optional int32 id = 1;
+    repeated VisualShaderNode nodes = 2;
     repeated VisualShaderConnection connections = 3;
-
     optional string fragment_shader_code = 4;
 }
